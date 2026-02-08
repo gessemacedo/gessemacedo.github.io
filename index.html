@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gessé Soares | Desenvolvedor de Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f5f5f0;
+            --accent: #0066cc;
+            --accent-dark: #004999;
+            --text: #2d2d2d;
+            --text-light: #6b6b6b;
+            --border: rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            background: var(--secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(245, 245, 240, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-dark);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, #e8e8dd 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(0, 102, 204, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 102, 204, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--text);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .cta-button:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+        }
+
+        section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        section .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 600px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            font-weight: 700;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-card .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .label {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .cert-badge {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .cert-badge:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+
+        .cert-badge h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+            margin-top: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--secondary);
+        }
+
+        .timeline-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .company {
+            font-weight: 600;
+            color: var(--accent-dark);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline-item .period {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item p {
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .contact {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 6rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .contact h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #0d0d0d;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 300px;
+                font-size: 5rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 6rem 2rem;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            .close-menu {
+                position: absolute;
+                top: 2rem;
+                right: 2rem;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                cursor: pointer;
+                color: var(--primary);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">Gessé Soares</div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <button class="close-menu" onclick="toggleMenu()">×</button>
+                <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="#habilidades" onclick="closeMenu()">Habilidades</a></li>
+                <li><a href="#certificacoes" onclick="closeMenu()">Certificações</a></li>
+                <li><a href="#experiencia" onclick="closeMenu()">Experiência</a></li>
+                <li><a href="#contato" onclick="closeMenu()">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Gessé Soares</h1>
+            <p class="subtitle">Desenvolvedor de Software</p>
+            <p class="tagline">Especializado em traduzir necessidades do negócio em soluções tecnológicas que entregam valor real</p>
+            <a href="#contato" class="cta-button">Entre em Contato</a>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <p class="section-subtitle">Analista de Sistemas com mais de 6 anos de experiência</p>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <p>Analista de Sistemas com mais de 6 anos de experiência em análise, desenvolvimento e manutenção de sistemas críticos, atuando com <strong>Progress OpenEdge</strong>, <strong>SQL</strong> e integrações <strong>SOAP/REST</strong>.</p>
+                <p>Experiência em metodologias ágeis como <strong>SCRUM</strong> e <strong>Kanban</strong>, com domínio de ferramentas como <strong>Azure DevOps</strong> e <strong>ServiceNow</strong>. Forte atuação em processos contábeis e projetos complexos.</p>
+                <p>Especializado em traduzir necessidades do negócio em soluções tecnológicas que entregam valor real e resultados confiáveis para a empresa e usuários finais.</p>
+            </div>
+            <div class="about-image fade-in">
+                GS
+            </div>
+        </div>
+
+        <div class="stats fade-in">
+            <div class="stat-card">
+                <span class="number">6+</span>
+                <span class="label">Anos de Experiência</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">7+</span>
+                <span class="label">Anos na Air Liquide</span>
+            </div>
+            <div class="stat-card">
+                <span class="number">5+</span>
+                <span class="label">Certificações</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades">
+        <h2>Habilidades Técnicas</h2>
+        <p class="section-subtitle">Tecnologias e ferramentas que domino</p>
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <h3>Desenvolvimento</h3>
+                <ul>
+                    <li>Progress OpenEdge</li>
+                    <li>SQL / SQL Server</li>
+                    <li>C# (Fundamentos)</li>
+                    <li>Integração de Software</li>
+                </ul>
+            </div>
+            <div class="skill-card fade-in">
+                <h3>Integrações</h3>
+                <ul>
+                    <li>APIs SOAP</li>
+                    <li>APIs REST</li>
+                    <li>Web Services</li>
+                    <li>Integração de Sistemas</li>
+                </ul>
+            </div>
+            <div class="skill-card fade-in">
+                <h3>Ferramentas</h3>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>Azure DevOps</li>
+                    <li>ServiceNow</li>
+                    <li>SQL Server Management</li>
+                </ul>
+            </div>
+            <div class="skill-card fade-in">
+                <h3>Metodologias</h3>
+                <ul>
+                    <li>SCRUM</li>
+                    <li>Kanban</li>
+                    <li>Desenvolvimento Ágil</li>
+                    <li>Análise de Requisitos</li>
+                </ul>
+            </div>
+            <div class="skill-card fade-in">
+                <h3>Idiomas</h3>
+                <ul>
+                    <li>Português (Nativo)</li>
+                    <li>Inglês (Professional Working)</li>
+                </ul>
+            </div>
+            <div class="skill-card fade-in">
+                <h3>Competências</h3>
+                <ul>
+                    <li>Análise de Sistemas</li>
+                    <li>Processos Contábeis</li>
+                    <li>Manutenção de Sistemas</li>
+                    <li>Resolução de Problemas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificacoes">
+        <h2>Certificações</h2>
+        <p class="section-subtitle">Formação complementar e especializações</p>
+        <div class="certifications fade-in">
+            <div class="cert-badge">
+                <h4>Formação C# Fundamentos</h4>
+            </div>
+            <div class="cert-badge">
+                <h4>SQL Server: Introdução ao SQL</h4>
+            </div>
+            <div class="cert-badge">
+                <h4>C# - Entendendo Exceções</h4>
+            </div>
+            <div class="cert-badge">
+                <h4>C# - Primeiros Passos</h4>
+            </div>
+            <div class="cert-badge">
+                <h4>Scrum</h4>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencia">
+        <h2>Experiência Profissional</h2>
+        <p class="section-subtitle">Minha trajetória na Air Liquide</p>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <h3>Analista de Sistemas Pleno</h3>
+                <div class="company">Air Liquide</div>
+                <div class="period">Dezembro 2022 - Presente</div>
+                <p>Atuo com análise e desenvolvimento de sistemas, com foco em Progress OpenEdge, SQL e integrações (SOAP e REST). Experiência em análise de demandas, desenvolvimento de soluções e manutenção de sistemas críticos, garantindo eficiência operacional e alinhamento com o negócio. Atuo em projetos complexos e processos contábeis, sempre priorizando qualidade, rastreabilidade e resultados confiáveis.</p>
+            </div>
+            <div class="timeline-item fade-in">
+                <h3>Analista de Sistemas Júnior</h3>
+                <div class="company">Air Liquide</div>
+                <div class="period">Maio 2019 - Dezembro 2022</div>
+                <p>Atuei como Analista e Desenvolvedor de Sistemas, liderando a resolução de chamados e a melhoria de processos críticos via ServiceNow. Responsável por análise de requisitos, desenvolvimento de soluções e garantia de qualidade em sistemas críticos para o negócio.</p>
+            </div>
+            <div class="timeline-item fade-in">
+                <h3>Analista de Suporte Técnico</h3>
+                <div class="company">Air Liquide</div>
+                <div class="period">Junho 2018 - Maio 2019</div>
+                <p>Ofereci suporte técnico e atendimento ao cliente, com foco na agilidade e qualidade na resolução de problemas. Responsável por analisar, abrir e acompanhar chamados, atuando diretamente com o time de desenvolvimento para reportar e priorizar incidentes críticos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Formação Acadêmica</h2>
+        <p class="section-subtitle">Educação e qualificações</p>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <h3>Bacharelado em Sistemas da Informação</h3>
+                <div class="company">UNINOVE</div>
+                <div class="period">2018 - 2021</div>
+                <p>Formação completa em Sistemas da Informação, com foco em desenvolvimento de software, análise de sistemas, banco de dados e metodologias de desenvolvimento.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contato">
+        <h2>Vamos Conversar?</h2>
+        <p>Estou sempre aberto a novos desafios e oportunidades</p>
+        <div class="contact-links">
+            <a href="mailto:gesse.soares.macedo@gmail.com" class="contact-link">
+                📧 Email
+            </a>
+            <a href="https://www.linkedin.com/in/gessé-soaresb518b3161" class="contact-link" target="_blank">
+                💼 LinkedIn
+            </a>
+            <a href="https://github.com/gessemacedo" class="contact-link" target="_blank">
+                💻 GitHub
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Gessé Soares. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                nav.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        function closeMenu() {
+            document.getElementById('navMenu').classList.remove('active');
+        }
+
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('navMenu');
+            const btn = document.querySelector('.mobile-menu-btn');
+            
+            if (!menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -29,7 +29,7 @@
       "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressCountry": "BR" },
       "email": "mailto:gesse.soares.macedo@gmail.com",
       "url": "https://gessemacedo.github.io/",
-      "knowsAbout": ["TOTVS Datasul", "Task Manager", "RPW", "Scrum", "Kanban", "Git", "ServiceNow", "Progress 4GL", "Progress OpenEdge", "PASOE", "TOTVS", "Integração de sistemas", "APIs REST", "APIs SOAP", "SQL", "Observabilidade", "Testes de desempenho", "Google Cloud Platform", "Azure DevOps", "Code review"],
+      "knowsAbout": ["TOTVS Datasul", "Task Manager", "RPW", "Scrum", "Kanban", "Git", "ServiceNow", "Progress 4GL", "Progress OpenEdge", "PASOE", "TOTVS", "Integração de sistemas", "APIs REST", "APIs SOAP", "SQL", "Observabilidade", "Testes de desempenho", "Google Cloud Platform", "Azure DevOps", "Code review", "Azure Pipelines", "PowerShell"],
       "sameAs": [
         "https://www.linkedin.com/in/gess%C3%A9-soares-b518b3161/",
         "https://github.com/gessemacedo"
@@ -118,6 +118,7 @@
                         <li>Progress 4GL / OpenEdge</li>
                         <li>TOTVS Datasul</li>
                         <li>Task Manager / RPW (batch)</li>
+                        <li>PowerShell (automação de pipelines)</li>
                         <li>PASOE (Progress Application Server)</li>
                         <li>SQL / SQL Server</li>
                         <li>C# / .NET (Fundamentos)</li>
@@ -138,7 +139,7 @@
                     <h3>Ferramentas</h3>
                     <ul>
                         <li>Git &amp; GitHub</li>
-                        <li>Azure DevOps (code review)</li>
+                        <li>Azure DevOps / Azure Pipelines (code review)</li>
                         <li>Google Cloud Platform (GCP)</li>
                         <li>ServiceNow</li>
                         <li>SQL Server Management Studio</li>
@@ -183,15 +184,16 @@
                     <div class="company">Air Liquide</div>
                     <div class="period"><time datetime="2022-12">Dezembro 2022</time> – Presente</div>
                     <ul>
-                        <li>Desenvolvo customizações no ERP <strong>TOTVS Datasul</strong> em <strong>Progress 4GL/OpenEdge</strong> para as áreas financeira, de compras, estoque e operações corporativas.</li>
-                        <li>Construo e sustento integrações via <strong>REST e SOAP</strong> e serviços de automação que reduzem atividades manuais.</li>
-                        <li>Analiso o desempenho e a observabilidade das integrações <strong>TOTVS/PASOE</strong>, correlacionando métricas de serviço com logs do TOTVS para identificar volume de chamadas, picos de tráfego, duração de execução e sessões pendentes, apontando oportunidades de processamento em lote, cache e controle de taxa.</li>
-                        <li>Executei testes de desempenho no novo servidor na <strong>GCP</strong>, após a migração do provedor anterior (Vivo).</li>
-                        <li>Migrei rotinas <strong>RPW</strong> para o <strong>Task Manager</strong>, modernizando a execução de processos batch.</li>
-                        <li>Configurei o <strong>Azure DevOps</strong> para testar code review nos fontes que desenvolvo e aplico boas práticas com <strong>Git</strong>.</li>
-                        <li>Atuo do levantamento de requisitos ao troubleshooting, em times <strong>Scrum</strong> e <strong>Kanban</strong>, incluindo projetos ligados a processos contábeis.</li>
+                        <li>Desenvolvo customizações no ERP <strong>TOTVS Datasul</strong> em <strong>Progress 4GL/OpenEdge</strong> para as áreas financeira, de compras, estoque, fiscal e operações corporativas; em um projeto recente para uma nova unidade de negócio, alterei 87 fontes, todos padronizados ao guia de desenvolvimento.</li>
+                        <li>Participo da refatoração de um sistema legado que reduziu a base de cerca de 5 milhões para 1 milhão de linhas de código, com tudo adequado ao padrão de desenvolvimento.</li>
+                        <li>Construo e sustento integrações <strong>REST e SOAP</strong> com aplicativos móveis e plataformas parceiras, com tratamento robusto de respostas e erros HTTP, registro em log em vez de erros em tela e serviços de automação que reduzem atividades manuais.</li>
+                        <li>Diagnostiquei timeouts por concorrência de registros (<em>record locks</em>) na integração de pedidos de um app móvel com o embarque no Datasul; revisando o escopo de transações e a liberação de registros, as falhas de integração caíram de forma significativa.</li>
+                        <li>Analiso o desempenho e a observabilidade das integrações <strong>TOTVS/PASOE</strong>, correlacionando métricas de serviço com logs do TOTVS para identificar volume de chamadas, picos de tráfego, duração de execução e sessões pendentes, apontando oportunidades de processamento em lote, cache e controle de taxa; executei testes de desempenho no novo servidor na <strong>GCP</strong>, após a migração do provedor anterior.</li>
+                        <li>Conduzo o projeto de migração do <strong>RPW</strong> clássico para o <strong>Task Manager</strong> (processos batch): mapeamento, testes de compatibilidade Windows/Linux, roteiro de atualização e validação em produção.</li>
+                        <li>Criei no <strong>Azure DevOps</strong> uma pipeline de code review automatizado em <strong>PowerShell</strong> para fontes Progress (.p, .w, .i), que analisa apenas as linhas alteradas no diff do <strong>Git</strong> e valida convenções de nomenclatura e boas práticas, rodando antes do check syntax de homologação; também atuo como revisor de código do time.</li>
+                        <li>Atuo do levantamento de requisitos ao troubleshooting, em times <strong>Scrum</strong> e <strong>Kanban</strong>, incluindo levantamentos de tabelas do Datasul para as áreas de negócio e relatórios semanais de status de jobs.</li>
                     </ul>
-                    <!-- [PREENCHER: métricas de impacto, ex.: nº de customizações/integrações mantidas, horas manuais economizadas com automações, nº de rotinas RPW migradas, volume de chamadas/dia, ganho de desempenho medido na GCP vs. Vivo (%), redução de tempo de execução ou de sessões pendentes, nº de fontes/PRs revisados no Azure DevOps] -->
+                    <!-- [PREENCHER: métricas de impacto, ex.: nº de customizações/integrações mantidas, horas manuais economizadas com automações, nº de rotinas RPW migradas, redução % das falhas de integração pedido→embarque, volume de chamadas/dia, ganho de desempenho medido na GCP vs. Vivo (%), redução de tempo de execução ou de sessões pendentes, nº de fontes/PRs revisados no Azure DevOps] -->
                 </div>
                 <div class="timeline-item fade-in">
                     <h3>Analista de Sistemas Júnior</h3>
@@ -199,6 +201,7 @@
                     <div class="period"><time datetime="2019-05">Maio 2019</time> – <time datetime="2022-12">Dezembro 2022</time></div>
                     <ul>
                         <li>Atuei como Analista e Desenvolvedor de Sistemas, liderando a resolução de chamados e a melhoria de processos críticos via <strong>ServiceNow</strong>.</li>
+                        <li>Corrigi bugs, otimizei processos de negócio e desenvolvi integrações do <strong>TOTVS</strong> com outros sistemas, usando <strong>Progress OpenEdge</strong>, <strong>SQL</strong> e <strong>SOAP</strong>.</li>
                         <li>Fui responsável por análise de requisitos, desenvolvimento de soluções e garantia de qualidade em sistemas críticos para o negócio.</li>
                     </ul>
                     <!-- [PREENCHER: métricas, ex.: volume médio de chamados/mês, SLA atingido, processos melhorados e ganho obtido] -->
@@ -210,7 +213,7 @@
                     <ul>
                         <li>Prestei suporte técnico N1 e atendimento ao cliente com foco em agilidade e qualidade na resolução de problemas.</li>
                         <li>Analisei, abri e acompanhei chamados, atuando diretamente com o time de desenvolvimento para reportar e priorizar incidentes críticos.</li>
-                        <li>Realizei manutenção de equipamentos.</li>
+                        <li>Mantive o contato com clientes internos e externos de forma clara e proativa e realizei manutenção de notebooks, impressoras, celulares e roteadores.</li>
                     </ul>
                     <!-- [PREENCHER: métricas, ex.: nº de atendimentos, tempo médio de resolução] -->
                 </div>

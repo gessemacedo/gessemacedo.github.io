@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigo | Gessé Soares</title>
+    <meta name="description" content="Artigos de Gessé Soares sobre desenvolvimento de software.">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <script>
+        document.documentElement.classList.replace('no-js', 'js');
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.dataset.theme = t;
+            } catch (e) {}
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <main id="conteudo" tabindex="-1" class="post-page">
+        <p><a href="index.html#artigos" id="backLink">← Voltar para os artigos</a></p>
+        <article class="post-body" id="postBody" aria-live="polite">
+            <noscript><p>Ative o JavaScript para ler o artigo, ou abra o arquivo .md na pasta posts/ do repositório.</p></noscript>
+        </article>
+    </main>
+    <script src="blog.js" defer></script>
+    <script src="post.js" defer></script>
+</body>
+</html>

@@ -5,11 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gessé Soares | Desenvolvedor de Software</title>
     <meta name="description" content="Gessé Soares, Desenvolvedor de Software e Analista de Sistemas em São Paulo, com experiência em Progress 4GL/OpenEdge, TOTVS Datasul, PASOE, integrações TOTVS e SOAP/REST, SQL e observabilidade.">
+    <!-- Quando o domínio próprio estiver ativo, troque gessemacedo.github.io pelo novo domínio aqui, no og:url e no JSON-LD -->
     <link rel="canonical" href="https://gessemacedo.github.io/">
+    <link rel="alternate" hreflang="pt-BR" href="https://gessemacedo.github.io/">
+    <link rel="alternate" hreflang="en" href="https://gessemacedo.github.io/?lang=en">
+    <link rel="alternate" hreflang="x-default" href="https://gessemacedo.github.io/">
+    <meta name="theme-color" content="#0066cc">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
     <meta property="og:type" content="profile">
     <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
     <meta property="og:title" content="Gessé Soares | Desenvolvedor de Software">
     <meta property="og:description" content="Analista de Sistemas e Desenvolvedor em São Paulo: Progress 4GL/OpenEdge, PASOE, integrações TOTVS e SOAP/REST, SQL e observabilidade.">
     <meta property="og:url" content="https://gessemacedo.github.io/">
@@ -37,14 +43,23 @@
     }
     </script>
 
-    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+    <script>
+        document.documentElement.classList.replace('no-js', 'js');
+        (function () {
+            try {
+                var t = localStorage.getItem('theme');
+                if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                document.documentElement.dataset.theme = t;
+            } catch (e) {}
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <a class="skip-link" href="#conteudo" data-i18n="k1">Pular para o conteúdo</a>
 
     <header>
         <nav aria-label="Navegação principal">
@@ -54,14 +69,19 @@
                 <div class="nav-menu" id="navMenu">
                     <button type="button" class="close-menu" aria-label="Fechar menu">×</button>
                     <ul>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#habilidades">Habilidades</a></li>
-                        <li><a href="#experiencia">Experiência</a></li>
-                        <li><a href="#projetos">Projetos</a></li>
-                        <li><a href="#cursos">Cursos</a></li>
-                        <li><a href="#formacao">Formação</a></li>
-                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#sobre" data-i18n="nav_sobre">Sobre</a></li>
+                        <li><a href="#habilidades" data-i18n="nav_habilidades">Habilidades</a></li>
+                        <li><a href="#experiencia" data-i18n="nav_experiencia">Experiência</a></li>
+                        <li><a href="#projetos" data-i18n="nav_projetos">Projetos</a></li>
+                        <li><a href="#cursos" data-i18n="nav_cursos">Cursos</a></li>
+                        <li><a href="#formacao" data-i18n="nav_formacao">Formação</a></li>
+                        <li><a href="#contato" data-i18n="nav_contato">Contato</a></li>
+                        <li><a href="#artigos" data-i18n="nav_artigos">Artigos</a></li>
                     </ul>
+                </div>
+                <div class="nav-tools">
+                    <button type="button" class="tool-btn" id="langToggle" lang="en" aria-label="Switch to English">EN</button>
+                    <button type="button" class="tool-btn" id="themeToggle" aria-label="Ativar tema escuro" aria-pressed="false"><span aria-hidden="true" class="theme-icon">🌙</span></button>
                 </div>
             </div>
         </nav>
@@ -71,22 +91,24 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>Gessé Soares</h1>
-                <p class="subtitle">Desenvolvedor de Software</p>
-                <p class="location">📍 São Paulo, SP · Brasil</p>
-                <p class="tagline">Especializado em traduzir necessidades do negócio em soluções tecnológicas que entregam valor real</p>
-                <a href="#contato" class="cta-button">Entre em Contato</a>
-                <!-- [PREENCHER: link para o CV em PDF, ex.: <a href="curriculo-gesse-soares.pdf" class="cta-button" download>Baixar CV (PDF)</a>] -->
+                <p class="subtitle" data-i18n="k2">Desenvolvedor de Software</p>
+                <p class="location" data-i18n="k3">📍 São Paulo, SP · Brasil</p>
+                <p class="tagline" data-i18n="k4">Especializado em traduzir necessidades do negócio em soluções tecnológicas que entregam valor real</p>
+                <div class="cta-group">
+                    <a href="#contato" class="cta-button" data-i18n="k5">Entre em Contato</a>
+                    <a href="assets/cv.pdf" class="cta-button cta-secondary" id="cvLink" download data-i18n="k6">Baixar CV (PDF)</a>
+                </div>
             </div>
         </section>
 
         <section id="sobre">
-            <h2>Sobre Mim</h2>
-            <p class="section-subtitle">Analista de Sistemas com <span class="years-it">8</span>+ anos de experiência em TI</p>
+            <h2 data-i18n="k7">Sobre Mim</h2>
+            <p class="section-subtitle" data-i18n="k8">Analista de Sistemas com <span class="years-it">8</span>+ anos de experiência em TI</p>
             <div class="about-content">
                 <div class="about-text fade-in">
-                    <p>Analista de Sistemas com mais de <span class="years-it">8</span> anos de experiência em TI, sendo mais de <span class="years-dev">7</span> em análise, desenvolvimento e manutenção de sistemas críticos, atuando com <strong>Progress 4GL/OpenEdge</strong>, <strong>PASOE</strong>, <strong>SQL</strong> e muitas integrações (<strong>TOTVS</strong>, <strong>SOAP/REST</strong>), com foco em desempenho e observabilidade.</p>
-                    <p>Experiência em metodologias ágeis como <strong>SCRUM</strong> e <strong>Kanban</strong>, com domínio de ferramentas como <strong>Azure DevOps</strong> e <strong>ServiceNow</strong>. Forte atuação em processos contábeis e projetos complexos, sempre com foco em qualidade e rastreabilidade.</p>
-                    <p>Utilizo ferramentas de <strong>IA</strong> como apoio na análise de código, troubleshooting, documentação e produtividade, sempre com validação técnica.</p>
+                    <p data-i18n="k9">Analista de Sistemas com mais de <span class="years-it">8</span> anos de experiência em TI, sendo mais de <span class="years-dev">7</span> em análise, desenvolvimento e manutenção de sistemas críticos, atuando com <strong>Progress 4GL/OpenEdge</strong>, <strong>PASOE</strong>, <strong>SQL</strong> e muitas integrações (<strong>TOTVS</strong>, <strong>SOAP/REST</strong>), com foco em desempenho e observabilidade.</p>
+                    <p data-i18n="k10">Experiência em metodologias ágeis como <strong>SCRUM</strong> e <strong>Kanban</strong>, com domínio de ferramentas como <strong>Azure DevOps</strong> e <strong>ServiceNow</strong>. Forte atuação em processos contábeis e projetos complexos, sempre com foco em qualidade e rastreabilidade.</p>
+                    <p data-i18n="k11">Utilizo ferramentas de <strong>IA</strong> como apoio na análise de código, troubleshooting, documentação e produtividade, sempre com validação técnica.</p>
                 </div>
                 <!-- [PREENCHER: foto profissional, ex.: <img src="foto.jpg" alt="Foto de Gessé Soares" class="about-image" width="500" height="500">] -->
                 <div class="about-image fade-in" aria-hidden="true">GS</div>
@@ -95,125 +117,125 @@
             <div class="stats fade-in">
                 <div class="stat-card">
                     <span class="number"><span class="years-it">8</span>+</span>
-                    <span class="label">Anos em TI</span>
+                    <span class="label" data-i18n="k12">Anos em TI</span>
                 </div>
                 <div class="stat-card">
                     <span class="number"><span class="years-dev">7</span>+</span>
-                    <span class="label">Anos como Analista de Sistemas</span>
+                    <span class="label" data-i18n="k13">Anos como Analista de Sistemas</span>
                 </div>
                 <div class="stat-card">
                     <span class="number">5</span>
-                    <span class="label">Cursos concluídos</span>
+                    <span class="label" data-i18n="k14">Cursos concluídos</span>
                 </div>
             </div>
         </section>
 
         <section id="habilidades">
-            <h2>Habilidades Técnicas</h2>
-            <p class="section-subtitle">Tecnologias e ferramentas que domino</p>
+            <h2 data-i18n="k15">Habilidades Técnicas</h2>
+            <p class="section-subtitle" data-i18n="k16">Tecnologias e ferramentas que domino</p>
             <div class="skills-grid">
                 <div class="skill-card fade-in">
-                    <h3>Desenvolvimento</h3>
+                    <h3 data-i18n="k17">Desenvolvimento</h3>
                     <ul>
                         <li>Progress 4GL / OpenEdge</li>
                         <li>TOTVS Datasul</li>
                         <li>Task Manager / RPW (batch)</li>
-                        <li>PowerShell (automação de pipelines)</li>
-                        <li>PASOE (Progress Application Server)</li>
+                        <li data-i18n="k18">PowerShell (automação de pipelines)</li>
+                        <li data-i18n="k19">PASOE (Progress Application Server)</li>
                         <li>SQL / SQL Server</li>
-                        <li>C# / .NET (Fundamentos)</li>
-                        <li>Integração de Software</li>
+                        <li data-i18n="k20">C# / .NET (Fundamentos)</li>
+                        <li data-i18n="k21">Integração de Software</li>
                     </ul>
                 </div>
                 <div class="skill-card fade-in">
-                    <h3>Integrações</h3>
+                    <h3 data-i18n="k22">Integrações</h3>
                     <ul>
                         <li>APIs SOAP</li>
                         <li>APIs REST</li>
                         <li>Web Services</li>
-                        <li>Integrações TOTVS</li>
-                        <li>Integração de Sistemas</li>
+                        <li data-i18n="k23">Integrações TOTVS</li>
+                        <li data-i18n="k24">Integração de Sistemas</li>
                     </ul>
                 </div>
                 <div class="skill-card fade-in">
-                    <h3>Ferramentas</h3>
+                    <h3 data-i18n="k25">Ferramentas</h3>
                     <ul>
                         <li>Git &amp; GitHub</li>
-                        <li>Azure DevOps / Azure Pipelines (code review)</li>
+                        <li data-i18n="k26">Azure DevOps / Azure Pipelines (code review)</li>
                         <li>Google Cloud Platform (GCP)</li>
                         <li>ServiceNow</li>
                         <li>SQL Server Management Studio</li>
                     </ul>
                 </div>
                 <div class="skill-card fade-in">
-                    <h3>Metodologias</h3>
+                    <h3 data-i18n="k27">Metodologias</h3>
                     <ul>
                         <li>SCRUM</li>
                         <li>Kanban</li>
-                        <li>Desenvolvimento Ágil</li>
-                        <li>Análise de Requisitos</li>
+                        <li data-i18n="k28">Desenvolvimento Ágil</li>
+                        <li data-i18n="k29">Análise de Requisitos</li>
                     </ul>
                 </div>
                 <div class="skill-card fade-in">
-                    <h3>Idiomas</h3>
+                    <h3 data-i18n="k30">Idiomas</h3>
                     <ul>
-                        <li>Português (Nativo)</li>
-                        <li>Inglês (Profissional)</li>
+                        <li data-i18n="k31">Português (Nativo)</li>
+                        <li data-i18n="k32">Inglês (Profissional)</li>
                     </ul>
                 </div>
                 <div class="skill-card fade-in">
-                    <h3>Competências</h3>
+                    <h3 data-i18n="k33">Competências</h3>
                     <ul>
-                        <li>Análise de Sistemas</li>
-                        <li>Processos Contábeis</li>
-                        <li>Manutenção de Sistemas</li>
-                        <li>Observabilidade e análise de logs</li>
-                        <li>Testes de desempenho</li>
-                        <li>Resolução de Problemas</li>
+                        <li data-i18n="k34">Análise de Sistemas</li>
+                        <li data-i18n="k35">Processos Contábeis</li>
+                        <li data-i18n="k36">Manutenção de Sistemas</li>
+                        <li data-i18n="k37">Observabilidade e análise de logs</li>
+                        <li data-i18n="k38">Testes de desempenho</li>
+                        <li data-i18n="k39">Resolução de Problemas</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="experiencia">
-            <h2>Experiência Profissional</h2>
-            <p class="section-subtitle">Minha trajetória na Air Liquide</p>
+            <h2 data-i18n="k40">Experiência Profissional</h2>
+            <p class="section-subtitle" data-i18n="k41">Minha trajetória na Air Liquide</p>
             <div class="timeline">
                 <div class="timeline-item fade-in">
-                    <h3>Analista de Sistemas Pleno</h3>
+                    <h3 data-i18n="k42">Analista de Sistemas Pleno</h3>
                     <div class="company">Air Liquide</div>
-                    <div class="period"><time datetime="2022-12">Dezembro 2022</time> – Presente</div>
+                    <div class="period" data-i18n="k43"><time datetime="2022-12">Dezembro 2022</time> – Presente</div>
                     <ul>
-                        <li>Desenvolvo customizações no ERP <strong>TOTVS Datasul</strong> em <strong>Progress 4GL/OpenEdge</strong> para as áreas financeira, de compras, estoque, fiscal e operações corporativas; em um projeto recente para uma nova unidade de negócio, alterei 87 fontes, todos padronizados ao guia de desenvolvimento.</li>
-                        <li>Participo da refatoração de um sistema legado que reduziu a base de cerca de 5 milhões para 1 milhão de linhas de código, com tudo adequado ao padrão de desenvolvimento.</li>
-                        <li>Construo e sustento integrações <strong>REST e SOAP</strong> com aplicativos móveis e plataformas parceiras, com tratamento robusto de respostas e erros HTTP, registro em log em vez de erros em tela e serviços de automação que reduzem atividades manuais.</li>
-                        <li>Diagnostiquei timeouts por concorrência de registros (<em>record locks</em>) na integração de pedidos de um app móvel com o embarque no Datasul; revisando o escopo de transações e a liberação de registros, as falhas de integração caíram de forma significativa.</li>
-                        <li>Analiso o desempenho e a observabilidade das integrações <strong>TOTVS/PASOE</strong>, correlacionando métricas de serviço com logs do TOTVS para identificar volume de chamadas, picos de tráfego, duração de execução e sessões pendentes, apontando oportunidades de processamento em lote, cache e controle de taxa; executei testes de desempenho no novo servidor na <strong>GCP</strong>, após a migração do provedor anterior.</li>
-                        <li>Conduzo o projeto de migração do <strong>RPW</strong> clássico para o <strong>Task Manager</strong> (processos batch): mapeamento, testes de compatibilidade Windows/Linux, roteiro de atualização e validação em produção.</li>
-                        <li>Criei no <strong>Azure DevOps</strong> uma pipeline de code review automatizado em <strong>PowerShell</strong> para fontes Progress (.p, .w, .i), que analisa apenas as linhas alteradas no diff do <strong>Git</strong> e valida convenções de nomenclatura e boas práticas, rodando antes do check syntax de homologação; também atuo como revisor de código do time.</li>
-                        <li>Atuo do levantamento de requisitos ao troubleshooting, em times <strong>Scrum</strong> e <strong>Kanban</strong>, incluindo levantamentos de tabelas do Datasul para as áreas de negócio e relatórios semanais de status de jobs.</li>
+                        <li data-i18n="k44">Desenvolvo customizações no ERP <strong>TOTVS Datasul</strong> em <strong>Progress 4GL/OpenEdge</strong> para as áreas financeira, de compras, estoque, fiscal e operações corporativas; em um projeto recente para uma nova unidade de negócio, alterei 87 fontes, todos padronizados ao guia de desenvolvimento.</li>
+                        <li data-i18n="k45">Participo da refatoração de um sistema legado que reduziu a base de cerca de 5 milhões para 1 milhão de linhas de código, com tudo adequado ao padrão de desenvolvimento.</li>
+                        <li data-i18n="k46">Construo e sustento integrações <strong>REST e SOAP</strong> com aplicativos móveis e plataformas parceiras, com tratamento robusto de respostas e erros HTTP, registro em log em vez de erros em tela e serviços de automação que reduzem atividades manuais.</li>
+                        <li data-i18n="k47">Diagnostiquei timeouts por concorrência de registros (<em>record locks</em>) na integração de pedidos de um app móvel com o embarque no Datasul; revisando o escopo de transações e a liberação de registros, as falhas de integração caíram de forma significativa.</li>
+                        <li data-i18n="k48">Analiso o desempenho e a observabilidade das integrações <strong>TOTVS/PASOE</strong>, correlacionando métricas de serviço com logs do TOTVS para identificar volume de chamadas, picos de tráfego, duração de execução e sessões pendentes, apontando oportunidades de processamento em lote, cache e controle de taxa; executei testes de desempenho no novo servidor na <strong>GCP</strong>, após a migração do provedor anterior.</li>
+                        <li data-i18n="k49">Conduzo o projeto de migração do <strong>RPW</strong> clássico para o <strong>Task Manager</strong> (processos batch): mapeamento, testes de compatibilidade Windows/Linux, roteiro de atualização e validação em produção.</li>
+                        <li data-i18n="k50">Criei no <strong>Azure DevOps</strong> uma pipeline de code review automatizado em <strong>PowerShell</strong> para fontes Progress (.p, .w, .i), que analisa apenas as linhas alteradas no diff do <strong>Git</strong> e valida convenções de nomenclatura e boas práticas, rodando antes do check syntax de homologação; também atuo como revisor de código do time.</li>
+                        <li data-i18n="k51">Atuo do levantamento de requisitos ao troubleshooting, em times <strong>Scrum</strong> e <strong>Kanban</strong>, incluindo levantamentos de tabelas do Datasul para as áreas de negócio e relatórios semanais de status de jobs.</li>
                     </ul>
                     <!-- [PREENCHER: métricas de impacto, ex.: nº de customizações/integrações mantidas, horas manuais economizadas com automações, nº de rotinas RPW migradas, redução % das falhas de integração pedido→embarque, volume de chamadas/dia, ganho de desempenho medido na GCP vs. Vivo (%), redução de tempo de execução ou de sessões pendentes, nº de fontes/PRs revisados no Azure DevOps] -->
                 </div>
                 <div class="timeline-item fade-in">
-                    <h3>Analista de Sistemas Júnior</h3>
+                    <h3 data-i18n="k52">Analista de Sistemas Júnior</h3>
                     <div class="company">Air Liquide</div>
-                    <div class="period"><time datetime="2019-05">Maio 2019</time> – <time datetime="2022-12">Dezembro 2022</time></div>
+                    <div class="period" data-i18n="k53"><time datetime="2019-05">Maio 2019</time> – <time datetime="2022-12">Dezembro 2022</time></div>
                     <ul>
-                        <li>Atuei como Analista e Desenvolvedor de Sistemas, liderando a resolução de chamados e a melhoria de processos críticos via <strong>ServiceNow</strong>.</li>
-                        <li>Corrigi bugs, otimizei processos de negócio e desenvolvi integrações do <strong>TOTVS</strong> com outros sistemas, usando <strong>Progress OpenEdge</strong>, <strong>SQL</strong> e <strong>SOAP</strong>.</li>
-                        <li>Fui responsável por análise de requisitos, desenvolvimento de soluções e garantia de qualidade em sistemas críticos para o negócio.</li>
+                        <li data-i18n="k54">Atuei como Analista e Desenvolvedor de Sistemas, liderando a resolução de chamados e a melhoria de processos críticos via <strong>ServiceNow</strong>.</li>
+                        <li data-i18n="k55">Corrigi bugs, otimizei processos de negócio e desenvolvi integrações do <strong>TOTVS</strong> com outros sistemas, usando <strong>Progress OpenEdge</strong>, <strong>SQL</strong> e <strong>SOAP</strong>.</li>
+                        <li data-i18n="k56">Fui responsável por análise de requisitos, desenvolvimento de soluções e garantia de qualidade em sistemas críticos para o negócio.</li>
                     </ul>
                     <!-- [PREENCHER: métricas, ex.: volume médio de chamados/mês, SLA atingido, processos melhorados e ganho obtido] -->
                 </div>
                 <div class="timeline-item fade-in">
-                    <h3>Analista de Suporte Técnico</h3>
+                    <h3 data-i18n="k57">Analista de Suporte Técnico</h3>
                     <div class="company">Air Liquide</div>
-                    <div class="period"><time datetime="2018-06">Junho 2018</time> – <time datetime="2019-05">Maio 2019</time></div>
+                    <div class="period" data-i18n="k58"><time datetime="2018-06">Junho 2018</time> – <time datetime="2019-05">Maio 2019</time></div>
                     <ul>
-                        <li>Prestei suporte técnico N1 e atendimento ao cliente com foco em agilidade e qualidade na resolução de problemas.</li>
-                        <li>Analisei, abri e acompanhei chamados, atuando diretamente com o time de desenvolvimento para reportar e priorizar incidentes críticos.</li>
-                        <li>Mantive o contato com clientes internos e externos de forma clara e proativa e realizei manutenção de notebooks, impressoras, celulares e roteadores.</li>
+                        <li data-i18n="k59">Prestei suporte técnico N1 e atendimento ao cliente com foco em agilidade e qualidade na resolução de problemas.</li>
+                        <li data-i18n="k60">Analisei, abri e acompanhei chamados, atuando diretamente com o time de desenvolvimento para reportar e priorizar incidentes críticos.</li>
+                        <li data-i18n="k61">Mantive o contato com clientes internos e externos de forma clara e proativa e realizei manutenção de notebooks, impressoras, celulares e roteadores.</li>
                     </ul>
                     <!-- [PREENCHER: métricas, ex.: nº de atendimentos, tempo médio de resolução] -->
                 </div>
@@ -221,74 +243,95 @@
         </section>
 
         <section id="projetos">
-            <h2>Projetos</h2>
-            <p class="section-subtitle">Projetos de estudo publicados no GitHub</p>
-            <div class="skills-grid">
-                <article class="skill-card project-card fade-in">
+            <h2 data-i18n="k62">Projetos</h2>
+            <p class="section-subtitle" data-i18n="k63">Projetos de estudo publicados no GitHub</p>
+            <div class="filters" id="projectFilters" role="group" aria-label="Filtrar projetos por tecnologia" hidden></div>
+            <p class="sr-only" id="projectStatus" aria-live="polite"></p>
+            <div class="skills-grid" id="projectList">
+                <!-- Os cards são gerados a partir de projects.js. Este card é o fallback sem JavaScript. -->
+                <article class="skill-card project-card">
                     <h3>FilmesApi</h3>
-                    <p>API de estudo cobrindo os fundamentos de uma API: CRUD, DbContext e AutoMapper.</p>
+                    <p data-i18n="k64">API de estudo cobrindo os fundamentos de uma API: CRUD, DbContext e AutoMapper.</p>
                     <div class="tags"><span>C#</span><span>.NET 5</span><span>Entity Framework Core</span><span>SQL Server</span><span>AutoMapper</span><span>Swagger</span></div>
-                    <a href="https://github.com/gessemacedo/FilmesApi" target="_blank" rel="noopener noreferrer">Ver no GitHub →</a>
+                    <a href="https://github.com/gessemacedo/FilmesApi" target="_blank" rel="noopener noreferrer" data-i18n="k65">Ver no GitHub →</a>
                 </article>
-                <!-- [PREENCHER: os repositórios APICatalogo e SistemasDeTarefas estão VAZIOS no GitHub (sem commits).
-                     Publique o código e descreva-os aqui, ex.:
-                <article class="skill-card project-card fade-in">
-                    <h3>APICatalogo</h3>
-                    <p>[PREENCHER: descrição]</p>
-                    <div class="tags"><span>[PREENCHER: stack]</span></div>
-                    <a href="https://github.com/gessemacedo/APICatalogo" target="_blank" rel="noopener noreferrer">Ver no GitHub →</a>
-                </article>
-                <article class="skill-card project-card fade-in">
-                    <h3>SistemasDeTarefas</h3>
-                    <p>[PREENCHER: descrição]</p>
-                    <div class="tags"><span>[PREENCHER: stack]</span></div>
-                    <a href="https://github.com/gessemacedo/SistemasDeTarefas" target="_blank" rel="noopener noreferrer">Ver no GitHub →</a>
-                </article>
-                ] -->
             </div>
         </section>
 
         <section id="cursos">
-            <h2>Cursos</h2>
-            <p class="section-subtitle">Formação complementar</p>
+            <h2 data-i18n="k66">Cursos</h2>
+            <p class="section-subtitle" data-i18n="k67">Formação complementar</p>
             <div class="certifications fade-in">
                 <!-- [PREENCHER: em cada curso, instituição emissora, ano e link de verificação, ex.: <p>Alura · 2022 · <a href="...">Ver certificado</a></p>] -->
-                <div class="cert-badge"><h3>Formação C# Fundamentos</h3></div>
-                <div class="cert-badge"><h3>SQL Server: Introdução ao SQL</h3></div>
-                <div class="cert-badge"><h3>C# – Entendendo Exceções</h3></div>
-                <div class="cert-badge"><h3>C# – Primeiros Passos</h3></div>
-                <div class="cert-badge"><h3>Scrum</h3></div>
+                <div class="cert-badge"><h3 data-i18n="cert1">Formação C# Fundamentos</h3></div>
+                <div class="cert-badge"><h3 data-i18n="cert2">SQL Server: Introdução ao SQL</h3></div>
+                <div class="cert-badge"><h3 data-i18n="cert3">C# – Entendendo Exceções</h3></div>
+                <div class="cert-badge"><h3 data-i18n="cert4">C# – Primeiros Passos</h3></div>
+                <div class="cert-badge"><h3 data-i18n="cert5">Scrum</h3></div>
             </div>
         </section>
 
         <section id="formacao">
-            <h2>Formação Acadêmica</h2>
-            <p class="section-subtitle">Educação e qualificações</p>
+            <h2 data-i18n="k68">Formação Acadêmica</h2>
+            <p class="section-subtitle" data-i18n="k69">Educação e qualificações</p>
             <div class="timeline">
                 <div class="timeline-item fade-in">
-                    <h3>Bacharelado em Sistemas de Informação</h3>
+                    <h3 data-i18n="k70">Bacharelado em Sistemas de Informação</h3>
                     <div class="company">UNINOVE</div>
                     <div class="period"><time datetime="2018">2018</time> – <time datetime="2021">2021</time></div>
-                    <p>Formação em Sistemas de Informação, com foco em desenvolvimento de software, análise de sistemas, banco de dados e metodologias de desenvolvimento.</p>
+                    <p data-i18n="k71">Formação em Sistemas de Informação, com foco em desenvolvimento de software, análise de sistemas, banco de dados e metodologias de desenvolvimento.</p>
                 </div>
             </div>
         </section>
 
-        <section class="contact" id="contato">
-            <h2>Vamos Conversar?</h2>
-            <p>Estou sempre aberto a novos desafios e oportunidades</p>
-            <div class="contact-links">
-                <a href="mailto:gesse.soares.macedo@gmail.com" class="contact-link"><span aria-hidden="true">📧</span> Email</a>
-                <a href="https://www.linkedin.com/in/gess%C3%A9-soares-b518b3161/" class="contact-link" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">💼</span> LinkedIn</a>
-                <a href="https://github.com/gessemacedo" class="contact-link" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">💻</span> GitHub</a>
+        <section id="artigos">
+            <h2 data-i18n="k72">Artigos</h2>
+            <p class="section-subtitle" data-i18n="k73">Notas e aprendizados sobre desenvolvimento</p>
+            <div class="skills-grid" id="postList">
+                <noscript data-i18n="k74"><p>Ative o JavaScript para ver a lista de artigos.</p></noscript>
             </div>
+        </section>
+
+        <section class="contact" id="contato">
+            <h2 data-i18n="k75">Vamos Conversar?</h2>
+            <p data-i18n="k76">Estou sempre aberto a novos desafios e oportunidades</p>
+            <div class="contact-links">
+                <a href="mailto:gesse.soares.macedo@gmail.com" class="contact-link" data-i18n="k77"><span aria-hidden="true">📧</span> Email</a>
+                <a href="https://www.linkedin.com/in/gess%C3%A9-soares-b518b3161/" class="contact-link" target="_blank" rel="noopener noreferrer" data-i18n="k78"><span aria-hidden="true">💼</span> LinkedIn</a>
+                <a href="https://github.com/gessemacedo" class="contact-link" target="_blank" rel="noopener noreferrer" data-i18n="k79"><span aria-hidden="true">💻</span> GitHub</a>
+            </div>
+
+            <form class="contact-form" id="contactForm" action="mailto:gesse.soares.macedo@gmail.com" method="post" enctype="text/plain" novalidate>
+                <h3 data-i18n="k80">Envie uma mensagem</h3>
+                <div class="field">
+                    <label for="cf-name" data-i18n="k81">Nome</label>
+                    <input id="cf-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="100">
+                </div>
+                <div class="field">
+                    <label for="cf-email" data-i18n="k82">E-mail</label>
+                    <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="150">
+                </div>
+                <div class="field">
+                    <label for="cf-message" data-i18n="k83">Mensagem</label>
+                    <textarea id="cf-message" name="message" rows="5" required minlength="10" maxlength="3000"></textarea>
+                </div>
+                <!-- Honeypot anti-spam: humanos não veem este campo -->
+                <div class="hp" aria-hidden="true">
+                    <label for="cf-website">Website</label>
+                    <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <button type="submit" class="cta-button" data-i18n="k84">Enviar</button>
+                <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; <span id="year">2026</span> Gessé Soares. Todos os direitos reservados.</p>
+        <p data-i18n="k85">&copy; <span id="year">2026</span> Gessé Soares. Todos os direitos reservados.</p>
     </footer>
 
+    <script src="i18n.js" defer></script>
+    <script src="projects.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "exemplo",
+    "file": "exemplo.md",
+    "date": "2026-10-28",
+    "example": true,
+    "title": { "pt": "[EXEMPLO] Título do primeiro artigo", "en": "[EXAMPLE] First article title" },
+    "summary": {
+      "pt": "Post de exemplo: substitua este arquivo pelo seu primeiro artigo (veja o README).",
+      "en": "Example post: replace this file with your first article (see the README)."
+    }
+  }
+]
